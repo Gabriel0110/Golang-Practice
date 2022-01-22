@@ -10,9 +10,8 @@ import (
 	_ "github.com/go-sql-driver/mysql" // alias the package to a blank identifier since we don't use it
 )
 
-// Define an application struct to hold the application-wide dependencies for the
-// web application. For now we'll only include fields for the two custom loggers, but
-// we'll add more to it as the build progresses.
+// Application struct to hold the application-wide dependencies for the
+// web application.
 type application struct {
 	errorLog *log.Logger
 	infoLog  *log.Logger
