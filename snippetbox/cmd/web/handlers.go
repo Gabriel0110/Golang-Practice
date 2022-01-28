@@ -39,11 +39,6 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		"./ui/html/footer.partial.tmpl",
 	}
 
-	// Use the template.ParseFiles() function to read the files and store the
-	// templates in a template set. Notice that we can pass the slice of file paths
-	// as a variadic parameter? If there's an error, we log the detailed error message and use
-	// the http.Error() function to send a generic 500 Internal Server Error
-	// response to the user.
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
 		app.serverError(w, err)
