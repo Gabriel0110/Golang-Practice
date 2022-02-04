@@ -27,9 +27,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	for _, snippet := range s {
-		fmt.Fprintf(w, "%v\n", snippet)
-	}
+	data := &templateData{Snippets: s}
 
 	// Initialize a slice containing the paths to the two files. Note that the
 	// home.page.tmpl file must be the *first* file in the slice.
@@ -47,7 +45,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	// We then use the Execute() method on the template set to write the template
 	// content as the response body. The last parameter to Execute() represents any
 	// dynamic data that we want to pass in, which for now we'll leave as nil.
-	err = ts.Execute(w, nil)
+	err = ts.Execute(w, data)
 	if err != nil {
 		app.serverError(w, err)
 	}
